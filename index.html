@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dispatch — журнал смены</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div>DISPATCH</div></header>
+<main>
+<div class="top"><h1>Журнал смены</h1><label>Дата начала смены<input id="shift" type="date" required></label><label>Смена<select id="shift-type"><option value="day">Дневная</option><option value="night">Ночная</option></select></label></div>
+<div class="metrics" aria-label="Сводка смены">
+<div class="card"><span>Всего заявок</span><strong id="total">0</strong></div>
+<div class="card"><span>В работе</span><strong id="active">0</strong></div>
+<div class="card"><span>Закрыто</span><strong id="closed">0</strong></div>
+<div class="card"><span>Срочных открыто</span><strong id="urgent">0</strong></div>
+<div class="card"><span>Среднее до закрытия</span><strong id="average">—</strong></div>
+</div>
+<section>
+<h2>Новая заявка</h2>
+<form id="form">
+<label>Описание<input id="title" maxlength="180" required></label>
+<label>Ответственный<input id="owner" maxlength="80" placeholder="Имя или бригада"></label>
+<label>Приоритет<select id="priority"><option>Обычный</option><option>Срочный</option></select></label>
+<button class="primary">Добавить</button>
+</form>
+<p id="notice" role="status"></p>
+</section>
+<section>
+<h2>Заявки смены</h2>
+<div class="toolbar">
+<label>Статус<select id="filter"><option value="">Все</option><option>Новая</option><option>В работе</option><option>Закрыта</option></select></label>
+<div><button id="demo" type="button">Загрузить пример</button> <button id="csv" type="button">Скачать CSV</button></div>
+</div>
+<p id="empty" hidden></p>
+<div class="scroll"><table id="table"><thead><tr><th scope="col">Заявка</th><th scope="col">Ответственный</th><th scope="col">Приоритет</th><th scope="col">Статус</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
